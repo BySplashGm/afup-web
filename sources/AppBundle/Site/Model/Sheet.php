@@ -184,19 +184,4 @@ class Sheet implements NotifyPropertyInterface
         $this->propertyChanged('patterns', $this->patterns, $patterns);
         $this->patterns = $patterns;
     }
-
-    public function isPublished(?DateTime $now = null): bool
-    {
-        $now ??= new DateTime();
-
-        if ($this->publicationStart !== null && $now < $this->publicationStart) {
-            return false;
-        }
-
-        if ($this->publicationEnd !== null && $now > $this->publicationEnd) {
-            return false;
-        }
-
-        return true;
-    }
 }
