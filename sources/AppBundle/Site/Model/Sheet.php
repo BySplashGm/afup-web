@@ -24,6 +24,9 @@ class Sheet implements NotifyPropertyInterface
     private ?int $position = null;
 
     private ?DateTime $creationDate = null;
+    private ?DateTime $publicationStart = null;
+    private ?DateTime $publicationEnd = null;
+
     private ?int $state = null;
     private ?string $image = null;
 
@@ -116,6 +119,28 @@ class Sheet implements NotifyPropertyInterface
         $this->creationDate = $creationDate;
     }
 
+    public function getPublicationStart(): ?DateTime
+    {
+        return $this->publicationStart;
+    }
+
+    public function setPublicationStart(?DateTime $publicationStart): void
+    {
+        $this->propertyChanged('publicationStart', $this->publicationStart, $publicationStart);
+        $this->publicationStart = $publicationStart;
+    }
+
+    public function getPublicationEnd(): ?DateTime
+    {
+        return $this->publicationEnd;
+    }
+
+    public function setPublicationEnd(?DateTime $publicationEnd): void
+    {
+        $this->propertyChanged('publicationEnd', $this->publicationEnd, $publicationEnd);
+        $this->publicationEnd = $publicationEnd;
+    }
+
     public function getState(): ?int
     {
         return $this->state;
@@ -158,5 +183,20 @@ class Sheet implements NotifyPropertyInterface
     {
         $this->propertyChanged('patterns', $this->patterns, $patterns);
         $this->patterns = $patterns;
+    }
+
+    public function isPublished(?DateTime $now = null): bool
+    {
+        $now ??= new DateTime();
+
+        if ($this->publicationStart !== null && $now < $this->publicationStart) {
+            return false;
+        }
+
+        if ($this->publicationEnd !== null && $now > $this->publicationEnd) {
+            return false;
+        }
+
+        return true;
     }
 }
