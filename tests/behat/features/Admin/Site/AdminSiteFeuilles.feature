@@ -14,19 +14,13 @@ Feature: Administration - Partie Site
     Then the response status code should be 403
 
   @reloadDbWithTestData
-  Scenario: Les champs de dates de publication sont présents dans le formulaire
+  Scenario: Ajout d'une feuille avec des dates de publication
     Given I am logged in as admin and on the Administration
     And I follow "Feuilles"
     When I follow "Ajouter"
     Then I should see "Ajouter une feuille"
     And I should see "Date de début de publication"
     And I should see "Date de fin de publication"
-
-  @reloadDbWithTestData
-  Scenario: Ajout d'une feuille avec des dates de publication
-    Given I am logged in as admin and on the Administration
-    And I follow "Feuilles"
-    When I follow "Ajouter"
     And I fill in "sheet[name]" with "Feuille avec dates"
     And I fill in "sheet[link]" with "http://lien"
     And I fill in "sheet[publicationStart]" with "2026-03-01"
