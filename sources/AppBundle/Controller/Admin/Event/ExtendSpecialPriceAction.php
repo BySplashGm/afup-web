@@ -19,7 +19,7 @@ class ExtendSpecialPriceAction extends AbstractController
     {
         $specialPrice = $this->ticketSpecialPriceRepository->get($id);
 
-        if ($specialPrice === null) {
+        if (!$specialPrice instanceof TicketSpecialPrice) {
             throw $this->createNotFoundException();
         }
 
