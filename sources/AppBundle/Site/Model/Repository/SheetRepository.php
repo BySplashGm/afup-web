@@ -77,8 +77,8 @@ class SheetRepository extends Repository implements MetadataInitializer
         ->from('afup_site_feuille')
         ->where('id_parent = :parentId')
         ->where('etat = 1')
-        ->where('date_debut_publication IS NULL OR date_debut_publication <= UNIX_TIMESTAMP()')
-        ->where('date_fin_publication IS NULL OR date_fin_publication >= UNIX_TIMESTAMP()');
+        ->where('(date_debut_publication IS NULL OR date_debut_publication <= UNIX_TIMESTAMP())')
+        ->where('(date_fin_publication IS NULL OR date_fin_publication >= UNIX_TIMESTAMP())');
 
         return $queryBuilder;
     }
