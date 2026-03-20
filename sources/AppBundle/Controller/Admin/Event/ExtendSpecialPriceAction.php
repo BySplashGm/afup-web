@@ -6,6 +6,7 @@ namespace AppBundle\Controller\Admin\Event;
 
 use AppBundle\Event\AdminEventSelection;
 use AppBundle\Event\Model\Repository\TicketSpecialPriceRepository;
+use AppBundle\Event\Model\TicketSpecialPrice;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
