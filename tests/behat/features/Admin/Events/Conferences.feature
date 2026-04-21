@@ -37,6 +37,18 @@ Feature: Administration - Évènements - Conférences
     And I should see "Adrien Gallou"
 
   @reloadDbWithTestData
+  Scenario: Ajout de posts Bluesky à une conférence
+    Given I am logged in as admin and on the Administration
+    And I follow "Conférences"
+    When I follow the button of tooltip "Modifier la conférence Jouons tous ensemble à un petit jeu"
+    Then I fill in "talk_admin[blueskyPosts]" with "https://bsky.app/profile/afup.bsky.social/post/3lnuwy2cces2g"
+    And I press "Soumettre"
+    Then I should see "La conférence a été modifiée"
+    When I go to "/talks/1-jouons-tous-ensemble-a-un-petit-jeu"
+    Then I should see "Posts Bluesky"
+    And the response should contain "https://bsky.app/profile/afup.bsky.social/post/3lnuwy2cces2g"
+
+  @reloadDbWithTestData
   Scenario: Modification d'une conférence
     Given I am logged in as admin and on the Administration
     And I follow "Conférences"

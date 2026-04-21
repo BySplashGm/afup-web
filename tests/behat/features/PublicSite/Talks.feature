@@ -22,6 +22,12 @@ Feature: Site Public - Talks
 
 
   @reloadDbWithTestData
+  Scenario: Affichage des posts Bluesky sur la page d'un talk
+    When I go to "/talks/2-rest-ou-graphql-exemples-illustres-avec-symfony-et-api-platform"
+    Then I should see "Posts Bluesky"
+    And the response should contain "bsky.app/profile/us.theguardian.com/post/3mjxal5k3rs2t"
+
+  @reloadDbWithTestData
   Scenario: Accès à la liste des vidéos d'un speaker
     When I go to "/talks/?fR[speakers.label][0]=Un Speaker"
     Then I should see "Les vidéos de Un Speaker"
