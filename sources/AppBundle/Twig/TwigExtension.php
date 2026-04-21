@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AppBundle\Twig;
 
+use AppBundle\SocialNetwork\Bluesky\BlueskyOembedClient;
 use Parsedown;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Twig\Extension\AbstractExtension;
@@ -16,6 +17,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
     public function __construct(
         private readonly Parsedown $parsedown,
         private readonly Parsedown $emailParsedown,
+        private readonly BlueskyOembedClient $blueskyOembedClient,
         #[Autowire(env: 'bool:GOOGLE_ANALYTICS_ENABLED')]
         private readonly bool $googleAnalyticsEnabled,
         #[Autowire(env: 'GOOGLE_ANALYTICS_ID')]
@@ -34,6 +36,10 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
                     return $response;
                 }
                 return '';
+            }, ['is_safe' => ['html']]),
+            new TwigFunction('bluesky_oembed', function (string $url): string {
+                $html = $this->blueskyOembedClient->getEmbedHtml($url);
+                return $html ?: '<a href="' . htmlspecialchars($url) . '">' . htmlspecialchars($url) . '</a>';
             }, ['is_safe' => ['html']]),
         ];
     }
