@@ -568,6 +568,11 @@ SQL;
                 'type' => 'string',
             ])
             ->addField([
+                'columnName' => 'bluesky_posts',
+                'fieldName' => 'blueskyPosts',
+                'type' => 'string',
+            ])
+            ->addField([
                 'columnName' => 'transcript',
                 'fieldName' => 'transcript',
                 'type' => 'string',

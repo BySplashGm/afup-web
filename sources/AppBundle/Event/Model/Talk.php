@@ -83,6 +83,8 @@ class Talk implements NotifyPropertyInterface
 
     private ?string $tweets = null;
 
+    private ?string $blueskyPosts = null;
+
     private ?string $transcript = null;
 
     private ?string $verbatim = null;
@@ -613,6 +615,40 @@ class Talk implements NotifyPropertyInterface
         }
 
         return $returnedTweets;
+    }
+
+    public function getBlueskyPosts(): ?string
+    {
+        return $this->blueskyPosts;
+    }
+
+    public function setBlueskyPosts(?string $blueskyPosts): self
+    {
+        $this->propertyChanged('blueskyPosts', $this->blueskyPosts, $blueskyPosts);
+        $this->blueskyPosts = $blueskyPosts;
+
+        return $this;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getBlueskyPostsAsArray(): array
+    {
+        if (!$this->getBlueskyPosts()) {
+            return [];
+        }
+        $returnedPosts = [];
+        foreach (explode(PHP_EOL, $this->getBlueskyPosts()) as $post) {
+            $post = trim($post);
+            if ($post === '' || $post === '0') {
+                continue;
+            }
+
+            $returnedPosts[] = $post;
+        }
+
+        return $returnedPosts;
     }
 
     public function getHasAllowedToSharingWithLocalOffices(): bool
