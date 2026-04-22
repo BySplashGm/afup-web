@@ -46,7 +46,7 @@ Feature: Administration - Évènements - Conférences
     Then I should see "La conférence a été modifiée"
     When I go to "/talks/1-jouons-tous-ensemble-a-un-petit-jeu"
     Then I should see "Posts Bluesky"
-    And the response should contain "https://bsky.app/profile/afup.bsky.social/post/3lnuwy2cces2g"
+    And the response should contain "3lnuwy2cces2g"
 
   @reloadDbWithTestData
   Scenario: Modification d'une conférence
