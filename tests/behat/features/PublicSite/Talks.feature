@@ -25,7 +25,7 @@ Feature: Site Public - Talks
   Scenario: Affichage des posts Bluesky sur la page d'un talk
     When I go to "/talks/2-rest-ou-graphql-exemples-illustres-avec-symfony-et-api-platform"
     Then I should see "Posts Bluesky"
-    And the response should contain "3mjxal5k3rs2t"
+    And the response should contain "3mjk3hmqxxe2d"
 
   @reloadDbWithTestData
   Scenario: Accès à la liste des vidéos d'un speaker
