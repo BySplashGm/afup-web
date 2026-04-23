@@ -77,6 +77,10 @@ class TalkAdminType extends TalkType
                 'label' => 'Tweets',
                 'required' => false,
             ])
+            ->add('blueskyPosts', TextareaType::class, [
+                'label' => 'Posts Bluesky',
+                'required' => false,
+            ])
             ->add('submittedOn', DateTimeType::class, [
                 'label' => 'Date de soumission',
             ])

@@ -79,6 +79,7 @@ il souffre aussi de d&eacute;fauts souvent sous-estim&eacute;s parmi lesquels l&
                 'joindin' => 24138,
                 'date_publication' => (new \DateTime())->modify('-1 days')->format('Y-m-d H:i:s'),
                 'has_allowed_to_sharing_with_local_offices' => 1,
+                'bluesky_posts' => 'https://bsky.app/profile/afup.org/post/3mjk3hmqxxe2d',
             ],
             [
                 'session_id' => 3,

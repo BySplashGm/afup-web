@@ -11,3 +11,5 @@ framework:
                     Content-Type: 'application/json'
             http_client.bluesky:
                 base_uri: 'https://bsky.social'
+            http_client.bluesky_embed:
+                base_uri: 'https://embed.bsky.app'

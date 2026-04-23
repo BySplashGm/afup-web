@@ -217,6 +217,30 @@
         </div>
         {% endif %}
 
+        {% if talk.getBlueskyPostsAsArray|length > 0 %}
+        <div class="container">
+            <div class="col-md-12">
+                <div class="container comments-title-container">
+                    <div class="col-md-12">
+                        <h2>Posts Bluesky</h2>
+                    </div>
+                </div>
+
+                {% for posts_batch in talk.getBlueskyPostsAsArray|batch(4) %}
+                    <div class="container">
+                        {% for post in posts_batch %}
+                            <div class="col-md-3">
+                                {{ bluesky_oembed(post) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+        </div>
+        {% endif %}
+
         {% if comments|length > 0 %}
             {% include 'common/star.html.twig' %}
             <div class="container">
